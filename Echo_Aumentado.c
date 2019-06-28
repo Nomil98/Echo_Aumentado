@@ -18,17 +18,19 @@ if (kbhit()){
 }
 
 void main(){
+setup_oscillator(OSC_16MHZ);
+ setup_adc_ports(NO_ANALOGS); 
 set_tris_c(0xff);
 enable_interrupts(int_rda);
 enable_interrupts(GLOBAL);
-
+printf("Ingresa un caracter y se mostrará el caracter siguiente.");
 while(1){
 
     if(flagRecibido==1){
         flagRecibido=0;
-        printf("%c", echo[puntero-1]);
-        if(kbhit()==13)
-         printf("%c", echo[puntero-1]+1);
+        printf("%c\n\r", echo[puntero-1]);
+        
+         printf("%c\n\r", echo[puntero-1]+1);
         }
     }
 }
